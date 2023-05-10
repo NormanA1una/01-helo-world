@@ -2,12 +2,17 @@
   <div>
     <h1>*ngIf</h1>
     <hr />
-    <mat-card>
-      <mat-card-title class="ml-4">Title</mat-card-title>
+    <mat-card *ngIf="mostrar">
+      <mat-card-title class="ml-4"> {{ frase.autor }} </mat-card-title>
       <mat-divider class="w-[95%] mx-auto"></mat-divider>
-      <mat-card-content class="mt-4"> Simple card </mat-card-content>
+      <mat-card-content class="mt-4"> {{ frase.mensaje }} </mat-card-content>
     </mat-card>
-    <button mat-raised-button color="primary" class="mt-4 w-[100%]">
+    <button
+      (click)="mostrar = !mostrar"
+      mat-raised-button
+      color="primary"
+      class="mt-4 w-[100%]"
+    >
       Mostar/Ocultar
     </button>
   </div>
@@ -18,9 +23,13 @@
       class="border-solid border-[1px] rounded-md border-slate-500"
       role="list"
     >
-      <mat-list-item role="listitem">Item 1</mat-list-item>
+      <mat-list-item
+        role="listitem"
+        *ngFor="let product of products; let i = index"
+      >
+        {{ i + 1 }}. {{ product }}
+        <span><mat-divider></mat-divider></span>
+      </mat-list-item>
     </mat-list>
   </div>
 </div>
-
-//TODO Hacer el *ngFor SOLOOOOOOOOOOOOOO
